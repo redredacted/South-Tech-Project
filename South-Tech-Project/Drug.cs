@@ -15,6 +15,7 @@ namespace South_Tech_Project
     public partial class Drug
     {
         public System.Guid DrugID { get; set; }
+        public System.Guid FacilityID { get; set; }
         public string Name { get; set; }
         public bool FDAApproved { get; set; }
         public string SideAffects { get; set; }

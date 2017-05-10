@@ -17,7 +17,7 @@ namespace South_Tech_Project
         public System.Guid NoteID { get; set; }
         public System.Guid EmployeeID { get; set; }
         public System.Guid PatientID { get; set; }
-        public string Note1 { get; set; }
+        public string NoteText { get; set; }
         public bool Important { get; set; }
         public byte[] Timestamp { get; set; }
     }

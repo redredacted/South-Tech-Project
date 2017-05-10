@@ -15,6 +15,7 @@ namespace South_Tech_Project
     public partial class Employee
     {
         public System.Guid EmployeeID { get; set; }
+        public System.Guid FacilityID { get; set; }
         public int Position { get; set; }
         public string Title { get; set; }
         public string FirstName { get; set; }

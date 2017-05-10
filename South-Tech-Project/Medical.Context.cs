@@ -28,9 +28,9 @@ namespace South_Tech_Project
         public virtual DbSet<Contact> Contacts { get; set; }
         public virtual DbSet<Drug> Drugs { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
+        public virtual DbSet<FacilityEvent> FacilityEvents { get; set; }
         public virtual DbSet<Note> Notes { get; set; }
         public virtual DbSet<Patient> Patients { get; set; }
-        public virtual DbSet<PatientInventory> PatientInventories { get; set; }
         public virtual DbSet<Treatment> Treatments { get; set; }
     }
 }

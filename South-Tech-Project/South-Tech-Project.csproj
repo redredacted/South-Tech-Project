@@ -81,6 +81,9 @@
     <Compile Include="Employee.cs">
       <DependentUpon>Medical.tt</DependentUpon>
     </Compile>
+    <Compile Include="FacilityEvent.cs">
+      <DependentUpon>Medical.tt</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,13 +105,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Medical.edmx</DependentUpon>
     </Compile>
+    <Compile Include="MedicalDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MedicalDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Note.cs">
       <DependentUpon>Medical.tt</DependentUpon>
     </Compile>
     <Compile Include="Patient.cs">
-      <DependentUpon>Medical.tt</DependentUpon>
-    </Compile>
-    <Compile Include="PatientInventory.cs">
       <DependentUpon>Medical.tt</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -116,6 +121,9 @@
     <Compile Include="Treatment.cs">
       <DependentUpon>Medical.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -129,6 +137,20 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Medical.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="Medical.edmx.diagram">
+      <DependentUpon>Medical.edmx</DependentUpon>
+    </None>
+    <None Include="MedicalDataSet.xsc">
+      <DependentUpon>MedicalDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="MedicalDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MedicalDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="MedicalDataSet.xss">
+      <DependentUpon>MedicalDataSet.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -146,17 +168,16 @@
   <ItemGroup>
     <Content Include="Medical.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Medical.Context.cs</LastGenOutput>
       <DependentUpon>Medical.edmx</DependentUpon>
+      <LastGenOutput>Medical.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Medical.edmx.sql" />
     <Content Include="Medical.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Medical.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Medical.cs</LastGenOutput>
       <DependentUpon>Medical.edmx</DependentUpon>
+      <LastGenOutput>Medical.cs</LastGenOutput>
     </Content>
     <Content Include="Medical_log.ldf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

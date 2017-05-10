@@ -15,6 +15,7 @@ namespace South_Tech_Project
     public partial class Patient
     {
         public System.Guid PatientID { get; set; }
+        public System.Guid FacilityID { get; set; }
         public System.Guid NurseID { get; set; }
         public string FirstName { get; set; }
         public string MiddleName { get; set; }

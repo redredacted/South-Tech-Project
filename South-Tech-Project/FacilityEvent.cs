@@ -12,10 +12,11 @@ namespace South_Tech_Project
     using System;
     using System.Collections.Generic;
     
-    public partial class PatientInventory
+    public partial class FacilityEvent
     {
-        public System.Guid ID { get; set; }
+        public System.Guid EventID { get; set; }
         public System.Guid PatientID { get; set; }
+        public System.Guid FacilityID { get; set; }
         public int type { get; set; }
         public byte[] Timestamp { get; set; }
         public string Notes { get; set; }

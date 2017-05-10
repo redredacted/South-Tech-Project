@@ -37,6 +37,7 @@
             this.ClientSize = new System.Drawing.Size(931, 422);
             this.Name = "Form1";
             this.Text = "Urgent Care";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
 
         }

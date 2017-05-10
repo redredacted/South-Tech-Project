@@ -4,96 +4,101 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="MedicalModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityContainer Name="MedicalModelStoreContainer">
-    <EntitySet Name="Contacts" EntityType="MedicalModel.Store.Contacts" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Drugs" EntityType="MedicalModel.Store.Drugs" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Employees" EntityType="MedicalModel.Store.Employees" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Notes" EntityType="MedicalModel.Store.Notes" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Patients" EntityType="MedicalModel.Store.Patients" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="PatientInventories" EntityType="MedicalModel.Store.PatientInventories" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Treatments" EntityType="MedicalModel.Store.Treatments" store:Type="Tables" Schema="dbo" />
-  </EntityContainer>
-  <EntityType Name="Contacts">
-    <Key>
-      <PropertyRef Name="ContactID" />
-    </Key>
-    <Property Name="ContactID" Type="uniqueidentifier" Nullable="false" />
-    <Property Name="PatientID" Type="uniqueidentifier" Nullable="false" />
-    <Property Name="Relation" Type="int" Nullable="false" />
-    <Property Name="WorkPhone" Type="nvarchar" Nullable="false" MaxLength="20" />
-    <Property Name="HomePhone" Type="nvarchar" Nullable="false" MaxLength="20" />
-    <Property Name="CellPhone" Type="nvarchar" Nullable="false" MaxLength="20" />
-  </EntityType>
-  <EntityType Name="Drugs">
-    <Key>
-      <PropertyRef Name="DrugID" />
-    </Key>
-    <Property Name="DrugID" Type="uniqueidentifier" Nullable="false" />
-    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
-    <Property Name="FDAApproved" Type="bit" Nullable="false" />
-    <Property Name="SideAffects" Type="nvarchar" Nullable="false" MaxLength="250" />
-    <Property Name="Stock" Type="int" Nullable="false" />
-    <Property Name="Description" Type="nvarchar" Nullable="false" MaxLength="250" />
-  </EntityType>
-  <EntityType Name="Employees">
-    <Key>
-      <PropertyRef Name="EmployeeID" />
-    </Key>
-    <Property Name="EmployeeID" Type="uniqueidentifier" Nullable="false" />
-    <Property Name="Position" Type="int" Nullable="false" />
-    <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="25" />
-    <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="25" />
-    <Property Name="MiddleName" Type="nvarchar" Nullable="false" MaxLength="25" />
-    <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="25" />
-    <Property Name="Phone" Type="nvarchar" Nullable="false" MaxLength="20" />
-    <Property Name="Salary" Type="decimal" Nullable="false" Precision="19" Scale="4" />
-    <Property Name="Working" Type="bit" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Notes">
-    <Key>
-      <PropertyRef Name="NoteID" />
-    </Key>
-    <Property Name="NoteID" Type="uniqueidentifier" Nullable="false" />
-    <Property Name="EmployeeID" Type="uniqueidentifier" Nullable="false" />
-    <Property Name="PatientID" Type="uniqueidentifier" Nullable="false" />
-    <Property Name="Note1" Type="nvarchar" Nullable="false" MaxLength="250" />
-    <Property Name="Important" Type="bit" Nullable="false" />
-    <Property Name="Timestamp" Type="binary" StoreGeneratedPattern="Computed" Nullable="false" MaxLength="8" />
-  </EntityType>
-  <EntityType Name="Patients">
-    <Key>
-      <PropertyRef Name="PatientID" />
-    </Key>
-    <Property Name="PatientID" Type="uniqueidentifier" Nullable="false" />
-    <Property Name="NurseID" Type="uniqueidentifier" Nullable="false" />
-    <Property Name="FirstName" Type="varchar" Nullable="false" MaxLength="50" />
-    <Property Name="MiddleName" Type="varchar" Nullable="false" MaxLength="50" />
-    <Property Name="LastName" Type="varchar" Nullable="false" MaxLength="50" />
-    <Property Name="Status" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="PatientInventories">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
-    <Property Name="PatientID" Type="uniqueidentifier" Nullable="false" />
-    <Property Name="type" Type="int" Nullable="false" />
-    <Property Name="Timestamp" Type="binary" StoreGeneratedPattern="Computed" Nullable="false" MaxLength="8" />
-    <Property Name="Notes" Type="nvarchar" Nullable="false" MaxLength="250" />
-  </EntityType>
-  <EntityType Name="Treatments">
-    <Key>
-      <PropertyRef Name="TreatmentID" />
-    </Key>
-    <Property Name="TreatmentID" Type="uniqueidentifier" Nullable="false" />
-    <Property Name="EmployeeID" Type="uniqueidentifier" Nullable="false" />
-    <Property Name="PatientID" Type="uniqueidentifier" Nullable="false" />
-    <Property Name="Type" Type="int" Nullable="false" />
-    <Property Name="Result" Type="nvarchar" Nullable="false" MaxLength="250" />
-    <Property Name="Timestamp" Type="binary" StoreGeneratedPattern="Computed" Nullable="false" MaxLength="8" />
-  </EntityType>
-</Schema></edmx:StorageModels>
+      <Schema Namespace="MedicalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Contacts">
+          <Key>
+            <PropertyRef Name="ContactID" />
+          </Key>
+          <Property Name="ContactID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PatientID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Relation" Type="int" Nullable="false" />
+          <Property Name="WorkPhone" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="HomePhone" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="CellPhone" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Drugs">
+          <Key>
+            <PropertyRef Name="DrugID" />
+          </Key>
+          <Property Name="DrugID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FacilityID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FDAApproved" Type="bit" Nullable="false" />
+          <Property Name="SideAffects" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Stock" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employees">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FacilityID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Position" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Salary" Type="decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Working" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FacilityEvents">
+          <Key>
+            <PropertyRef Name="EventID" />
+          </Key>
+          <Property Name="EventID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PatientID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FacilityID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="type" Type="int" Nullable="false" />
+          <Property Name="Timestamp" Type="binary" MaxLength="8" Nullable="false" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Notes">
+          <Key>
+            <PropertyRef Name="NoteID" />
+          </Key>
+          <Property Name="NoteID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="EmployeeID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PatientID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="NoteText" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Important" Type="bit" Nullable="false" />
+          <Property Name="Timestamp" Type="binary" MaxLength="8" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Patients">
+          <Key>
+            <PropertyRef Name="PatientID" />
+          </Key>
+          <Property Name="PatientID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FacilityID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="NurseID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MiddleName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Treatments">
+          <Key>
+            <PropertyRef Name="TreatmentID" />
+          </Key>
+          <Property Name="TreatmentID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="EmployeeID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PatientID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Type" Type="int" Nullable="false" />
+          <Property Name="Result" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Timestamp" Type="binary" MaxLength="8" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="MedicalModelStoreContainer">
+          <EntitySet Name="Contacts" EntityType="Self.Contacts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Drugs" EntityType="Self.Drugs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FacilityEvents" EntityType="Self.FacilityEvents" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Notes" EntityType="Self.Notes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Patients" EntityType="Self.Patients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Treatments" EntityType="Self.Treatments" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MedicalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -113,6 +118,7 @@
             <PropertyRef Name="DrugID" />
           </Key>
           <Property Name="DrugID" Type="Guid" Nullable="false" />
+          <Property Name="FacilityID" Type="Guid" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="FDAApproved" Type="Boolean" Nullable="false" />
           <Property Name="SideAffects" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
@@ -124,6 +130,7 @@
             <PropertyRef Name="EmployeeID" />
           </Key>
           <Property Name="EmployeeID" Type="Guid" Nullable="false" />
+          <Property Name="FacilityID" Type="Guid" Nullable="false" />
           <Property Name="Position" Type="Int32" Nullable="false" />
           <Property Name="Title" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="FirstName" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
@@ -133,6 +140,17 @@
           <Property Name="Salary" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <Property Name="Working" Type="Boolean" Nullable="false" />
         </EntityType>
+        <EntityType Name="FacilityEvent">
+          <Key>
+            <PropertyRef Name="EventID" />
+          </Key>
+          <Property Name="EventID" Type="Guid" Nullable="false" />
+          <Property Name="PatientID" Type="Guid" Nullable="false" />
+          <Property Name="FacilityID" Type="Guid" Nullable="false" />
+          <Property Name="type" Type="Int32" Nullable="false" />
+          <Property Name="Timestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
         <EntityType Name="Note">
           <Key>
             <PropertyRef Name="NoteID" />
@@ -140,30 +158,21 @@
           <Property Name="NoteID" Type="Guid" Nullable="false" />
           <Property Name="EmployeeID" Type="Guid" Nullable="false" />
           <Property Name="PatientID" Type="Guid" Nullable="false" />
-          <Property Name="Note1" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NoteText" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Important" Type="Boolean" Nullable="false" />
-          <Property Name="Timestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Timestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" />
         </EntityType>
         <EntityType Name="Patient">
           <Key>
             <PropertyRef Name="PatientID" />
           </Key>
           <Property Name="PatientID" Type="Guid" Nullable="false" />
+          <Property Name="FacilityID" Type="Guid" Nullable="false" />
           <Property Name="NurseID" Type="Guid" Nullable="false" />
           <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Status" Type="Int32" Nullable="false" />
-        </EntityType>
-        <EntityType Name="PatientInventory">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Guid" Nullable="false" />
-          <Property Name="PatientID" Type="Guid" Nullable="false" />
-          <Property Name="type" Type="Int32" Nullable="false" />
-          <Property Name="Timestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
-          <Property Name="Notes" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
         <EntityType Name="Treatment">
           <Key>
@@ -174,111 +183,116 @@
           <Property Name="PatientID" Type="Guid" Nullable="false" />
           <Property Name="Type" Type="Int32" Nullable="false" />
           <Property Name="Result" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Timestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Timestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" />
         </EntityType>
         <EntityContainer Name="MedicalEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Contacts" EntityType="Self.Contact" />
           <EntitySet Name="Drugs" EntityType="Self.Drug" />
           <EntitySet Name="Employees" EntityType="Self.Employee" />
+          <EntitySet Name="FacilityEvents" EntityType="Self.FacilityEvent" />
           <EntitySet Name="Notes" EntityType="Self.Note" />
           <EntitySet Name="Patients" EntityType="Self.Patient" />
-          <EntitySet Name="PatientInventories" EntityType="Self.PatientInventory" />
           <EntitySet Name="Treatments" EntityType="Self.Treatment" />
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="MedicalModelStoreContainer" CdmEntityContainer="MedicalEntities">
-    <EntitySetMapping Name="Contacts">
-      <EntityTypeMapping TypeName="IsTypeOf(MedicalModel.Contact)">
-        <MappingFragment StoreEntitySet="Contacts">
-          <ScalarProperty Name="ContactID" ColumnName="ContactID" />
-          <ScalarProperty Name="PatientID" ColumnName="PatientID" />
-          <ScalarProperty Name="Relation" ColumnName="Relation" />
-          <ScalarProperty Name="WorkPhone" ColumnName="WorkPhone" />
-          <ScalarProperty Name="HomePhone" ColumnName="HomePhone" />
-          <ScalarProperty Name="CellPhone" ColumnName="CellPhone" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Drugs">
-      <EntityTypeMapping TypeName="IsTypeOf(MedicalModel.Drug)">
-        <MappingFragment StoreEntitySet="Drugs">
-          <ScalarProperty Name="DrugID" ColumnName="DrugID" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="FDAApproved" ColumnName="FDAApproved" />
-          <ScalarProperty Name="SideAffects" ColumnName="SideAffects" />
-          <ScalarProperty Name="Stock" ColumnName="Stock" />
-          <ScalarProperty Name="Description" ColumnName="Description" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Employees">
-      <EntityTypeMapping TypeName="IsTypeOf(MedicalModel.Employee)">
-        <MappingFragment StoreEntitySet="Employees">
-          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
-          <ScalarProperty Name="Position" ColumnName="Position" />
-          <ScalarProperty Name="Title" ColumnName="Title" />
-          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
-          <ScalarProperty Name="LastName" ColumnName="LastName" />
-          <ScalarProperty Name="Phone" ColumnName="Phone" />
-          <ScalarProperty Name="Salary" ColumnName="Salary" />
-          <ScalarProperty Name="Working" ColumnName="Working" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Notes">
-      <EntityTypeMapping TypeName="IsTypeOf(MedicalModel.Note)">
-        <MappingFragment StoreEntitySet="Notes">
-          <ScalarProperty Name="NoteID" ColumnName="NoteID" />
-          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
-          <ScalarProperty Name="PatientID" ColumnName="PatientID" />
-          <ScalarProperty Name="Note1" ColumnName="Note1" />
-          <ScalarProperty Name="Important" ColumnName="Important" />
-          <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Patients">
-      <EntityTypeMapping TypeName="IsTypeOf(MedicalModel.Patient)">
-        <MappingFragment StoreEntitySet="Patients">
-          <ScalarProperty Name="PatientID" ColumnName="PatientID" />
-          <ScalarProperty Name="NurseID" ColumnName="NurseID" />
-          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
-          <ScalarProperty Name="LastName" ColumnName="LastName" />
-          <ScalarProperty Name="Status" ColumnName="Status" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="PatientInventories">
-      <EntityTypeMapping TypeName="IsTypeOf(MedicalModel.PatientInventory)">
-        <MappingFragment StoreEntitySet="PatientInventories">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="PatientID" ColumnName="PatientID" />
-          <ScalarProperty Name="type" ColumnName="type" />
-          <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
-          <ScalarProperty Name="Notes" ColumnName="Notes" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Treatments">
-      <EntityTypeMapping TypeName="IsTypeOf(MedicalModel.Treatment)">
-        <MappingFragment StoreEntitySet="Treatments">
-          <ScalarProperty Name="TreatmentID" ColumnName="TreatmentID" />
-          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
-          <ScalarProperty Name="PatientID" ColumnName="PatientID" />
-          <ScalarProperty Name="Type" ColumnName="Type" />
-          <ScalarProperty Name="Result" ColumnName="Result" />
-          <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-  </EntityContainerMapping>
-</Mapping></edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MedicalModelStoreContainer" CdmEntityContainer="MedicalEntities">
+          <EntitySetMapping Name="Contacts">
+            <EntityTypeMapping TypeName="MedicalModel.Contact">
+              <MappingFragment StoreEntitySet="Contacts">
+                <ScalarProperty Name="ContactID" ColumnName="ContactID" />
+                <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+                <ScalarProperty Name="Relation" ColumnName="Relation" />
+                <ScalarProperty Name="WorkPhone" ColumnName="WorkPhone" />
+                <ScalarProperty Name="HomePhone" ColumnName="HomePhone" />
+                <ScalarProperty Name="CellPhone" ColumnName="CellPhone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Drugs">
+            <EntityTypeMapping TypeName="MedicalModel.Drug">
+              <MappingFragment StoreEntitySet="Drugs">
+                <ScalarProperty Name="DrugID" ColumnName="DrugID" />
+                <ScalarProperty Name="FacilityID" ColumnName="FacilityID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="FDAApproved" ColumnName="FDAApproved" />
+                <ScalarProperty Name="SideAffects" ColumnName="SideAffects" />
+                <ScalarProperty Name="Stock" ColumnName="Stock" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="MedicalModel.Employee">
+              <MappingFragment StoreEntitySet="Employees">
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="FacilityID" ColumnName="FacilityID" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+                <ScalarProperty Name="Working" ColumnName="Working" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FacilityEvents">
+            <EntityTypeMapping TypeName="MedicalModel.FacilityEvent">
+              <MappingFragment StoreEntitySet="FacilityEvents">
+                <ScalarProperty Name="EventID" ColumnName="EventID" />
+                <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+                <ScalarProperty Name="FacilityID" ColumnName="FacilityID" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Notes">
+            <EntityTypeMapping TypeName="MedicalModel.Note">
+              <MappingFragment StoreEntitySet="Notes">
+                <ScalarProperty Name="NoteID" ColumnName="NoteID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+                <ScalarProperty Name="NoteText" ColumnName="NoteText" />
+                <ScalarProperty Name="Important" ColumnName="Important" />
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Patients">
+            <EntityTypeMapping TypeName="MedicalModel.Patient">
+              <MappingFragment StoreEntitySet="Patients">
+                <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+                <ScalarProperty Name="FacilityID" ColumnName="FacilityID" />
+                <ScalarProperty Name="NurseID" ColumnName="NurseID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Treatments">
+            <EntityTypeMapping TypeName="MedicalModel.Treatment">
+              <MappingFragment StoreEntitySet="Treatments">
+                <ScalarProperty Name="TreatmentID" ColumnName="TreatmentID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Result" ColumnName="Result" />
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
   <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
@@ -292,21 +306,11 @@
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="true" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
-        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->
-    <Diagrams>
-      <Diagram DiagramId="3005f784800d413084f211840d05d0b4" Name="Diagram1">
-        <EntityTypeShape EntityType="MedicalModel.Contact" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MedicalModel.Drug" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MedicalModel.Employee" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MedicalModel.Note" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MedicalModel.Patient" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MedicalModel.PatientInventory" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MedicalModel.Treatment" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
-      </Diagram>
-    </Diagrams>
+    <Diagrams></Diagrams>
   </Designer>
 </edmx:Edmx>
