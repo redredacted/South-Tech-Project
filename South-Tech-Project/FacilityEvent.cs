@@ -20,5 +20,8 @@ namespace South_Tech_Project
         public int type { get; set; }
         public byte[] Timestamp { get; set; }
         public string Notes { get; set; }
+    
+        public virtual Facility Facility { get; set; }
+        public virtual Patient Patient { get; set; }
     }
 }

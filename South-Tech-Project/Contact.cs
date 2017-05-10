@@ -20,5 +20,7 @@ namespace South_Tech_Project
         public string WorkPhone { get; set; }
         public string HomePhone { get; set; }
         public string CellPhone { get; set; }
+    
+        public virtual Patient Patient { get; set; }
     }
 }

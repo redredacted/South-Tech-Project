@@ -12,34 +12,28 @@ namespace South_Tech_Project
     using System;
     using System.Collections.Generic;
     
-    public partial class Patient
+    public partial class Facility
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Patient()
+        public Facility()
         {
-            this.Notes = new HashSet<Note>();
             this.FacilityEvents = new HashSet<FacilityEvent>();
-            this.Contacts = new HashSet<Contact>();
-            this.Treatments = new HashSet<Treatment>();
+            this.Patients = new HashSet<Patient>();
+            this.Drugs = new HashSet<Drug>();
         }
     
-        public System.Guid PatientID { get; set; }
         public System.Guid FacilityID { get; set; }
-        public System.Guid NurseID { get; set; }
-        public string FirstName { get; set; }
-        public string MiddleName { get; set; }
-        public string LastName { get; set; }
-        public int Status { get; set; }
+        public string Name { get; set; }
+        public string Zip { get; set; }
+        public string Phone { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
     
-        public virtual Facility Facility { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Note> Notes { get; set; }
-        public virtual Employee Nurse { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FacilityEvent> FacilityEvents { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Contact> Contacts { get; set; }
+        public virtual ICollection<Patient> Patients { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Treatment> Treatments { get; set; }
+        public virtual ICollection<Drug> Drugs { get; set; }
     }
 }

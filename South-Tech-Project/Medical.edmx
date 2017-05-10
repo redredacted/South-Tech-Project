@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="MedicalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="MedicalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Contacts">
           <Key>
             <PropertyRef Name="ContactID" />
@@ -42,6 +42,17 @@
           <Property Name="Phone" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="Salary" Type="decimal" Precision="19" Scale="4" Nullable="false" />
           <Property Name="Working" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Facilities">
+          <Key>
+            <PropertyRef Name="FacilityID" />
+          </Key>
+          <Property Name="FacilityID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Zip" Type="nchar" MaxLength="5" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="State" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="FacilityEvents">
           <Key>
@@ -92,13 +103,13 @@
           <EntitySet Name="Contacts" EntityType="Self.Contacts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Drugs" EntityType="Self.Drugs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Facilities" EntityType="Self.Facilities" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FacilityEvents" EntityType="Self.FacilityEvents" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Notes" EntityType="Self.Notes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Patients" EntityType="Self.Patients" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Treatments" EntityType="Self.Treatments" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MedicalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -112,6 +123,7 @@
           <Property Name="WorkPhone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="HomePhone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="CellPhone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Patient" Relationship="MedicalModel.ContactPatient" FromRole="Contact" ToRole="Patient" />
         </EntityType>
         <EntityType Name="Drug">
           <Key>
@@ -124,6 +136,7 @@
           <Property Name="SideAffects" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Stock" Type="Int32" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Facility" Relationship="MedicalModel.DrugFacility" FromRole="Drug" ToRole="Facility" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
@@ -139,6 +152,9 @@
           <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Salary" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <Property Name="Working" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Patients" Relationship="MedicalModel.PatientEmployee" FromRole="Employee" ToRole="Patient" />
+          <NavigationProperty Name="Notes" Relationship="MedicalModel.EmployeeNote" FromRole="Employee" ToRole="Note" />
+          <NavigationProperty Name="Treatments" Relationship="MedicalModel.TreatmentEmployee" FromRole="Employee" ToRole="Treatment" />
         </EntityType>
         <EntityType Name="FacilityEvent">
           <Key>
@@ -150,6 +166,8 @@
           <Property Name="type" Type="Int32" Nullable="false" />
           <Property Name="Timestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" />
           <Property Name="Notes" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Facility" Relationship="MedicalModel.FacilityToEvent" FromRole="FacilityEvent" ToRole="Facility" />
+          <NavigationProperty Name="Patient" Relationship="MedicalModel.FacilityEventPatient" FromRole="FacilityEvent" ToRole="Patient" />
         </EntityType>
         <EntityType Name="Note">
           <Key>
@@ -161,6 +179,8 @@
           <Property Name="NoteText" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Important" Type="Boolean" Nullable="false" />
           <Property Name="Timestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" />
+          <NavigationProperty Name="Patient" Relationship="MedicalModel.PatientNote" FromRole="Note" ToRole="Patient" />
+          <NavigationProperty Name="Employee" Relationship="MedicalModel.EmployeeNote" FromRole="Note" ToRole="Employee" />
         </EntityType>
         <EntityType Name="Patient">
           <Key>
@@ -173,6 +193,12 @@
           <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Status" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Facility" Relationship="MedicalModel.FacilityPatient" FromRole="Patient" ToRole="Facility" />
+          <NavigationProperty Name="Notes" Relationship="MedicalModel.PatientNote" FromRole="Patient" ToRole="Note" />
+          <NavigationProperty Name="Nurse" Relationship="MedicalModel.PatientEmployee" FromRole="Patient" ToRole="Employee" />
+          <NavigationProperty Name="FacilityEvents" Relationship="MedicalModel.FacilityEventPatient" FromRole="Patient" ToRole="FacilityEvent" />
+          <NavigationProperty Name="Contacts" Relationship="MedicalModel.ContactPatient" FromRole="Patient" ToRole="Contact" />
+          <NavigationProperty Name="Treatments" Relationship="MedicalModel.TreatmentPatient" FromRole="Patient" ToRole="Treatment" />
         </EntityType>
         <EntityType Name="Treatment">
           <Key>
@@ -184,6 +210,8 @@
           <Property Name="Type" Type="Int32" Nullable="false" />
           <Property Name="Result" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Timestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" />
+          <NavigationProperty Name="Employee" Relationship="MedicalModel.TreatmentEmployee" FromRole="Treatment" ToRole="Employee" />
+          <NavigationProperty Name="Patient" Relationship="MedicalModel.TreatmentPatient" FromRole="Treatment" ToRole="Patient" />
         </EntityType>
         <EntityContainer Name="MedicalEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Contacts" EntityType="Self.Contact" />
@@ -193,7 +221,182 @@
           <EntitySet Name="Notes" EntityType="Self.Note" />
           <EntitySet Name="Patients" EntityType="Self.Patient" />
           <EntitySet Name="Treatments" EntityType="Self.Treatment" />
+          <EntitySet Name="Facilities" EntityType="MedicalModel.Facility" />
+          <AssociationSet Name="FacilityToEvent" Association="MedicalModel.FacilityToEvent">
+            <End Role="Facility" EntitySet="Facilities" />
+            <End Role="FacilityEvent" EntitySet="FacilityEvents" />
+          </AssociationSet>
+          <AssociationSet Name="FacilityPatient" Association="MedicalModel.FacilityPatient">
+            <End Role="Facility" EntitySet="Facilities" />
+            <End Role="Patient" EntitySet="Patients" />
+          </AssociationSet>
+          <AssociationSet Name="PatientNote" Association="MedicalModel.PatientNote">
+            <End Role="Patient" EntitySet="Patients" />
+            <End Role="Note" EntitySet="Notes" />
+          </AssociationSet>
+          <AssociationSet Name="PatientEmployee" Association="MedicalModel.PatientEmployee">
+            <End Role="Patient" EntitySet="Patients" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FacilityEventPatient" Association="MedicalModel.FacilityEventPatient">
+            <End Role="FacilityEvent" EntitySet="FacilityEvents" />
+            <End Role="Patient" EntitySet="Patients" />
+          </AssociationSet>
+          <AssociationSet Name="EmployeeNote" Association="MedicalModel.EmployeeNote">
+            <End Role="Note" EntitySet="Notes" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="DrugFacility" Association="MedicalModel.DrugFacility">
+            <End Role="Drug" EntitySet="Drugs" />
+            <End Role="Facility" EntitySet="Facilities" />
+          </AssociationSet>
+          <AssociationSet Name="TreatmentEmployee" Association="MedicalModel.TreatmentEmployee">
+            <End Role="Treatment" EntitySet="Treatments" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="ContactPatient" Association="MedicalModel.ContactPatient">
+            <End Role="Contact" EntitySet="Contacts" />
+            <End Role="Patient" EntitySet="Patients" />
+          </AssociationSet>
+          <AssociationSet Name="TreatmentPatient" Association="MedicalModel.TreatmentPatient">
+            <End Role="Treatment" EntitySet="Treatments" />
+            <End Role="Patient" EntitySet="Patients" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Facility">
+          <Key>
+            <PropertyRef Name="FacilityID" />
+          </Key>
+          <Property Name="FacilityID" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Zip" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="true" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="FacilityEvents" Relationship="MedicalModel.FacilityToEvent" FromRole="Facility" ToRole="FacilityEvent" />
+          <NavigationProperty Name="Patients" Relationship="MedicalModel.FacilityPatient" FromRole="Facility" ToRole="Patient" />
+          <NavigationProperty Name="Drugs" Relationship="MedicalModel.DrugFacility" FromRole="Facility" ToRole="Drug" />
+        </EntityType>
+        <Association Name="FacilityToEvent">
+          <End Type="MedicalModel.Facility" Role="Facility" Multiplicity="1" />
+          <End Type="MedicalModel.FacilityEvent" Role="FacilityEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Facility">
+              <PropertyRef Name="FacilityID" />
+            </Principal>
+            <Dependent Role="FacilityEvent">
+              <PropertyRef Name="FacilityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FacilityPatient">
+          <End Type="MedicalModel.Facility" Role="Facility" Multiplicity="1" />
+          <End Type="MedicalModel.Patient" Role="Patient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Facility">
+              <PropertyRef Name="FacilityID" />
+            </Principal>
+            <Dependent Role="Patient">
+              <PropertyRef Name="FacilityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PatientNote">
+          <End Type="MedicalModel.Patient" Role="Patient" Multiplicity="1" />
+          <End Type="MedicalModel.Note" Role="Note" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="PatientID" />
+            </Principal>
+            <Dependent Role="Note">
+              <PropertyRef Name="PatientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PatientEmployee">
+          <End Type="MedicalModel.Patient" Role="Patient" Multiplicity="*" />
+          <End Type="MedicalModel.Employee" Role="Employee" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Patient">
+              <PropertyRef Name="NurseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FacilityEventPatient">
+          <End Type="MedicalModel.FacilityEvent" Role="FacilityEvent" Multiplicity="*" />
+          <End Type="MedicalModel.Patient" Role="Patient" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="PatientID" />
+            </Principal>
+            <Dependent Role="FacilityEvent">
+              <PropertyRef Name="PatientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="EmployeeNote">
+          <End Type="MedicalModel.Note" Role="Note" Multiplicity="*" />
+          <End Type="MedicalModel.Employee" Role="Employee" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Note">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DrugFacility">
+          <End Type="MedicalModel.Drug" Role="Drug" Multiplicity="*" />
+          <End Type="MedicalModel.Facility" Role="Facility" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Facility">
+              <PropertyRef Name="FacilityID" />
+            </Principal>
+            <Dependent Role="Drug">
+              <PropertyRef Name="FacilityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TreatmentEmployee">
+          <End Type="MedicalModel.Treatment" Role="Treatment" Multiplicity="*" />
+          <End Type="MedicalModel.Employee" Role="Employee" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Treatment">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ContactPatient">
+          <End Type="MedicalModel.Contact" Role="Contact" Multiplicity="*" />
+          <End Type="MedicalModel.Patient" Role="Patient" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="PatientID" />
+            </Principal>
+            <Dependent Role="Contact">
+              <PropertyRef Name="PatientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TreatmentPatient">
+          <End Type="MedicalModel.Treatment" Role="Treatment" Multiplicity="*" />
+          <End Type="MedicalModel.Patient" Role="Patient" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="PatientID" />
+            </Principal>
+            <Dependent Role="Treatment">
+              <PropertyRef Name="PatientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -287,6 +490,18 @@
                 <ScalarProperty Name="Type" ColumnName="Type" />
                 <ScalarProperty Name="Result" ColumnName="Result" />
                 <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Facilities">
+            <EntityTypeMapping TypeName="MedicalModel.Facility">
+              <MappingFragment StoreEntitySet="Facilities">
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="FacilityID" ColumnName="FacilityID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -21,5 +21,7 @@ namespace South_Tech_Project
         public string SideAffects { get; set; }
         public int Stock { get; set; }
         public string Description { get; set; }
+    
+        public virtual Facility Facility { get; set; }
     }
 }

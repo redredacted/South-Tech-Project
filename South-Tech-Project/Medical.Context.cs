@@ -32,5 +32,6 @@ namespace South_Tech_Project
         public virtual DbSet<Note> Notes { get; set; }
         public virtual DbSet<Patient> Patients { get; set; }
         public virtual DbSet<Treatment> Treatments { get; set; }
+        public virtual DbSet<Facility> Facilities { get; set; }
     }
 }

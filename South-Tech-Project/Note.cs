@@ -20,5 +20,8 @@ namespace South_Tech_Project
         public string NoteText { get; set; }
         public bool Important { get; set; }
         public byte[] Timestamp { get; set; }
+    
+        public virtual Patient Patient { get; set; }
+        public virtual Employee Employee { get; set; }
     }
 }

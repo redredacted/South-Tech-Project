@@ -14,6 +14,14 @@ namespace South_Tech_Project
     
     public partial class Employee
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Employee()
+        {
+            this.Patients = new HashSet<Patient>();
+            this.Notes = new HashSet<Note>();
+            this.Treatments = new HashSet<Treatment>();
+        }
+    
         public System.Guid EmployeeID { get; set; }
         public System.Guid FacilityID { get; set; }
         public int Position { get; set; }
@@ -24,5 +32,12 @@ namespace South_Tech_Project
         public string Phone { get; set; }
         public decimal Salary { get; set; }
         public bool Working { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Patient> Patients { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Note> Notes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Treatment> Treatments { get; set; }
     }
 }
