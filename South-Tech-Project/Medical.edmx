@@ -53,6 +53,7 @@
           <Property Name="Phone" Type="nvarchar" MaxLength="15" Nullable="false" />
           <Property Name="City" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="State" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="FacilityEvents">
           <Key>
@@ -276,6 +277,7 @@
           <NavigationProperty Name="FacilityEvents" Relationship="MedicalModel.FacilityToEvent" FromRole="Facility" ToRole="FacilityEvent" />
           <NavigationProperty Name="Patients" Relationship="MedicalModel.FacilityPatient" FromRole="Facility" ToRole="Patient" />
           <NavigationProperty Name="Drugs" Relationship="MedicalModel.DrugFacility" FromRole="Facility" ToRole="Drug" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FacilityToEvent">
           <End Type="MedicalModel.Facility" Role="Facility" Multiplicity="1" />
@@ -496,6 +498,7 @@
           <EntitySetMapping Name="Facilities">
             <EntityTypeMapping TypeName="MedicalModel.Facility">
               <MappingFragment StoreEntitySet="Facilities">
+                <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="State" ColumnName="State" />
                 <ScalarProperty Name="City" ColumnName="City" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />

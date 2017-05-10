@@ -85,6 +85,9 @@
     <Compile Include="Employee.cs">
       <DependentUpon>Medical.tt</DependentUpon>
     </Compile>
+    <Compile Include="Facility.cs">
+      <DependentUpon>Medical.tt</DependentUpon>
+    </Compile>
     <Compile Include="FacilityEvent.cs">
       <DependentUpon>Medical.tt</DependentUpon>
     </Compile>

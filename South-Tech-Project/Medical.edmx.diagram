@@ -12,7 +12,7 @@
         <EntityTypeShape EntityType="MedicalModel.Note" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="MedicalModel.Patient" Width="1.5" PointX="4.75" PointY="5.25" IsExpanded="true" />
         <EntityTypeShape EntityType="MedicalModel.Treatment" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MedicalModel.Facility" Width="1.5" PointX="7" PointY="4.875" />
+        <EntityTypeShape EntityType="MedicalModel.Facility" Width="1.5" PointX="7" PointY="4.875" IsExpanded="true" />
         <AssociationConnector Association="MedicalModel.FacilityToEvent" />
         <AssociationConnector Association="MedicalModel.FacilityPatient" />
         <AssociationConnector Association="MedicalModel.PatientNote" />
