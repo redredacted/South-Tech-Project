@@ -80,6 +80,7 @@ namespace South_Tech_Project
                         pat.NurseID = emp.EmployeeID;
                         pat.Status = 0;
                         pat.PatientID = Guid.NewGuid();
+                        MedDB.Patients.Add(pat);
 
                         MedDB.SaveChanges();
                     }
@@ -106,6 +107,8 @@ namespace South_Tech_Project
         private void viewToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FacilityManagement managementForm = new FacilityManagement(selection);
+            managementForm.FormClosed += new FormClosedEventHandler((object _sender, FormClosedEventArgs _e) => this.Show());
+            this.Hide();
             managementForm.Show();
         }
 

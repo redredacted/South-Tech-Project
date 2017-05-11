@@ -34,10 +34,10 @@
             this.tsBtnInfo = new System.Windows.Forms.ToolStripButton();
             this.tsBtnExit = new System.Windows.Forms.ToolStripButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dgvFacilities = new System.Windows.Forms.DataGridView();
+            this.dgvPatients = new System.Windows.Forms.DataGridView();
             this.PatientToolStrip.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvFacilities)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPatients)).BeginInit();
             this.SuspendLayout();
             // 
             // PatientToolStrip
@@ -88,7 +88,7 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.dgvFacilities);
+            this.groupBox1.Controls.Add(this.dgvPatients);
             this.groupBox1.Location = new System.Drawing.Point(12, 29);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(907, 381);
@@ -96,29 +96,29 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Patients Table";
             // 
-            // dgvFacilities
+            // dgvPatients
             // 
-            this.dgvFacilities.AllowUserToAddRows = false;
-            this.dgvFacilities.AllowUserToDeleteRows = false;
-            this.dgvFacilities.AllowUserToResizeRows = false;
-            this.dgvFacilities.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dgvPatients.AllowUserToAddRows = false;
+            this.dgvPatients.AllowUserToDeleteRows = false;
+            this.dgvPatients.AllowUserToResizeRows = false;
+            this.dgvPatients.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvFacilities.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvFacilities.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
-            this.dgvFacilities.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
-            this.dgvFacilities.Location = new System.Drawing.Point(6, 19);
-            this.dgvFacilities.MultiSelect = false;
-            this.dgvFacilities.Name = "dgvFacilities";
-            this.dgvFacilities.ReadOnly = true;
-            this.dgvFacilities.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dgvFacilities.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvFacilities.ShowCellErrors = false;
-            this.dgvFacilities.ShowCellToolTips = false;
-            this.dgvFacilities.ShowEditingIcon = false;
-            this.dgvFacilities.ShowRowErrors = false;
-            this.dgvFacilities.Size = new System.Drawing.Size(895, 356);
-            this.dgvFacilities.TabIndex = 2;
+            this.dgvPatients.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvPatients.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.dgvPatients.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
+            this.dgvPatients.Location = new System.Drawing.Point(6, 19);
+            this.dgvPatients.MultiSelect = false;
+            this.dgvPatients.Name = "dgvPatients";
+            this.dgvPatients.ReadOnly = true;
+            this.dgvPatients.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dgvPatients.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvPatients.ShowCellErrors = false;
+            this.dgvPatients.ShowCellToolTips = false;
+            this.dgvPatients.ShowEditingIcon = false;
+            this.dgvPatients.ShowRowErrors = false;
+            this.dgvPatients.Size = new System.Drawing.Size(895, 356);
+            this.dgvPatients.TabIndex = 2;
             // 
             // Patients
             // 
@@ -133,7 +133,7 @@
             this.PatientToolStrip.ResumeLayout(false);
             this.PatientToolStrip.PerformLayout();
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvFacilities)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPatients)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -146,6 +146,6 @@
         private System.Windows.Forms.ToolStripButton tsBtnInfo;
         private System.Windows.Forms.ToolStripButton tsBtnExit;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataGridView dgvFacilities;
+        private System.Windows.Forms.DataGridView dgvPatients;
     }
 }

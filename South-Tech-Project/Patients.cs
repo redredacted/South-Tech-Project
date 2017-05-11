@@ -8,18 +8,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.Entity;
+using System.Collections.ObjectModel;
 
 namespace South_Tech_Project
 {
     public partial class Patients : Form
     {
-        // private FacilityManagement _owner;
-        private ICollection<Patient> _patients;
+        private Facility _facility;
 
         public Patients(Facility facility)
         {
-            //_owner = owner;
-            _patients = facility.Patients;
+            _facility = facility;
             InitializeComponent();
         }
 
@@ -36,17 +35,12 @@ namespace South_Tech_Project
             }
         }
 
-        public void UpdateFacilities()
+        private void Patients_Load(object sender, EventArgs e)
         {
             using (var MedDB = new MedicalEntities())
             {
-                dgvFacilities.DataSource = _patients.ToList();
+                dgvPatients.DataSource = MedDB.Facilities.Attach(_facility).Patients.ToList();
             }
-        }
-
-        private void Patients_Load(object sender, EventArgs e)
-        {
-            UpdateFacilities();
         }
     }
 }

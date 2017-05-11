@@ -23,6 +23,8 @@ namespace South_Tech_Project
         private void btnPatients_Click(object sender, EventArgs e)
         {
             Patients patForm = new Patients(_facility);
+            patForm.FormClosed += new FormClosedEventHandler((object _sender, FormClosedEventArgs _e) => this.Show());
+            this.Hide();
             patForm.ShowDialog();
         }
     }
