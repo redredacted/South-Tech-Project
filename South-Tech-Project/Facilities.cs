@@ -58,6 +58,30 @@ namespace South_Tech_Project
                         AddFacility("Hospitality Hospital", "35101 place way", "12345", "3145442183", "Kansas City", "Kansas");
                         AddFacility("Gamble Hospital", "666 casino avenue", "77777", "2175343133", "Timbuktu", "Missouri");
                         AddFacility("Cavendish Memorial Hospital", "61253 Musa acuminata road", "73457", "5175643233", "Triploid", "California");
+
+                        Employee emp = new Employee();
+                        emp.EmployeeID = Guid.NewGuid();
+                        emp.FacilityID = MedDB.Facilities.First().FacilityID;
+                        emp.FirstName = "Sammy";
+                        emp.MiddleName = "Lea";
+                        emp.LastName = "Roberts";
+                        emp.Phone = "3145442183";
+                        emp.Position = 0;
+                        emp.Salary = 9999999999.99m;
+                        emp.Title = "For What";
+                        emp.Working = true;
+                        MedDB.Employees.Add(emp);
+
+                        Patient pat = new Patient();
+                        pat.FacilityID = MedDB.Facilities.First().FacilityID;
+                        pat.FirstName = "Kenneth";
+                        pat.MiddleName = "William";
+                        pat.LastName = "Roberts";
+                        pat.NurseID = emp.EmployeeID;
+                        pat.Status = 0;
+                        pat.PatientID = Guid.NewGuid();
+
+                        MedDB.SaveChanges();
                     }
                 }
                 catch (Exception exc)

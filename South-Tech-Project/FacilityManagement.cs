@@ -19,5 +19,11 @@ namespace South_Tech_Project
             _facility = facility;
             InitializeComponent();
         }
+
+        private void btnPatients_Click(object sender, EventArgs e)
+        {
+            Patients patForm = new Patients(_facility);
+            patForm.ShowDialog();
+        }
     }
 }
