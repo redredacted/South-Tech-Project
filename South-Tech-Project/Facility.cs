@@ -20,15 +20,16 @@ namespace South_Tech_Project
             this.FacilityEvents = new HashSet<FacilityEvent>();
             this.Patients = new HashSet<Patient>();
             this.Drugs = new HashSet<Drug>();
+            this.Employees = new HashSet<Employee>();
         }
     
         public System.Guid FacilityID { get; set; }
         public string Name { get; set; }
+        public string Address { get; set; }
         public string Zip { get; set; }
-        public string Phone { get; set; }
         public string City { get; set; }
         public string State { get; set; }
-        public string Address { get; set; }
+        public string Phone { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FacilityEvent> FacilityEvents { get; set; }
@@ -36,5 +37,7 @@ namespace South_Tech_Project
         public virtual ICollection<Patient> Patients { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Drug> Drugs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Employee> Employees { get; set; }
     }
 }

@@ -6,13 +6,13 @@
     <edmx:Diagrams>
       <Diagram DiagramId="fe58f5cd9fd142de95e28165b6150c00" Name="Diagram1" ZoomLevel="64">
         <EntityTypeShape EntityType="MedicalModel.Contact" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MedicalModel.Drug" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MedicalModel.Employee" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedicalModel.Drug" Width="1.5" PointX="2.875" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedicalModel.Employee" Width="1.5" PointX="7.875" PointY="0.625" IsExpanded="true" />
         <EntityTypeShape EntityType="MedicalModel.FacilityEvent" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MedicalModel.Note" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MedicalModel.Patient" Width="1.5" PointX="4.75" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="MedicalModel.Treatment" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MedicalModel.Facility" Width="1.5" PointX="7" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedicalModel.Note" Width="1.5" PointX="4.375" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedicalModel.Patient" Width="1.5" PointX="11.125" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedicalModel.Treatment" Width="1.5" PointX="10.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedicalModel.Facility" Width="1.5" PointX="7.125" PointY="4.75" IsExpanded="true" />
         <AssociationConnector Association="MedicalModel.FacilityToEvent" />
         <AssociationConnector Association="MedicalModel.FacilityPatient" />
         <AssociationConnector Association="MedicalModel.PatientNote" />
@@ -23,6 +23,7 @@
         <AssociationConnector Association="MedicalModel.TreatmentEmployee" />
         <AssociationConnector Association="MedicalModel.ContactPatient" />
         <AssociationConnector Association="MedicalModel.TreatmentPatient" />
+        <AssociationConnector Association="MedicalModel.FacilityEmployee" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -39,5 +39,6 @@ namespace South_Tech_Project
         public virtual ICollection<Note> Notes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Treatment> Treatments { get; set; }
+        public virtual Facility Facility { get; set; }
     }
 }
