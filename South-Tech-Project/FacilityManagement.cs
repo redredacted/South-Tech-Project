@@ -12,8 +12,11 @@ namespace South_Tech_Project
 {
     public partial class FacilityManagement : Form
     {
-        public FacilityManagement()
+        private Facility _facility;
+
+        public FacilityManagement(Facility facility)
         {
+            _facility = facility;
             InitializeComponent();
         }
     }

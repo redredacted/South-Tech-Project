@@ -20,7 +20,7 @@ namespace South_Tech_Project
             InitializeComponent();
         }
 
-        public void AddFacility(string name, string address, string zip, string phone, string city, string state)
+        public static void AddFacility(string name, string address, string zip, string phone, string city, string state)
         {
             using (var MedDB = new MedicalEntities())
             {
@@ -34,6 +34,16 @@ namespace South_Tech_Project
                 f.State = state;
                 MedDB.Facilities.Add(f);
                 MedDB.SaveChanges();
+                //UpdateFacilities();
+            }
+        }
+
+        public void UpdateFacilities()
+        {
+            using (var MedDB = new MedicalEntities())
+            {
+                MedDB.Facilities.Load();
+                dgvFacilities.DataSource = MedDB.Facilities.Local;
             }
         }
 
@@ -56,9 +66,7 @@ namespace South_Tech_Project
                     throw;
                 }
 
-                MedDB.Facilities.Load();
-
-                dgvFacilities.DataSource = MedDB.Facilities.Local;
+                UpdateFacilities();
 
                 // filters out the Navigation properties id fields
                 dgvFacilities.Columns["FacilityID"].Visible = false;
@@ -73,15 +81,26 @@ namespace South_Tech_Project
 
         private void viewToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            FacilityManagement managementForm = new FacilityManagement(selection);
+            managementForm.Show();
+        }
+
+        private void tsBtnAdd_Click(object sender, EventArgs e)
+        {
+            FacilityEdit editDialogue = new FacilityEdit();
+            editDialogue.ShowDialog();
+            UpdateFacilities();
         }
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            FacilityEdit editDialogue = new FacilityEdit(selection);
+            editDialogue.ShowDialog();
         }
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Are You Sure?", $"Are you sure you want to delete {selection.Name} from the facilities table?", MessageBoxButtons.YesNo);
+            DialogResult result = MessageBox.Show($"Are you sure you want to delete {selection.Name} from the facilities table?", "Are You Sure?", MessageBoxButtons.YesNo);
 
             if (result == DialogResult.Yes)
             {
@@ -91,9 +110,6 @@ namespace South_Tech_Project
                 {
                     MedDB.Entry(selection).State = EntityState.Deleted;
                     MedDB.SaveChanges();
-
-                    MedDB.Facilities.Load();
-                    dgvFacilities.DataSource = MedDB.Facilities.Local;
                 }
             }
         }
@@ -101,7 +117,11 @@ namespace South_Tech_Project
         private void dgvFacilities_RowContextMenuStripNeeded(object sender, DataGridViewRowContextMenuStripNeededEventArgs e)
         {
             selection = (Facility)dgvFacilities.Rows[e.RowIndex].DataBoundItem;
-            MessageBox.Show($"name: {selection.Name}");
+        }
+
+        private void toolStripButtonExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

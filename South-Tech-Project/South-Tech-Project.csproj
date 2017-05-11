@@ -88,6 +88,12 @@
     <Compile Include="Facility.cs">
       <DependentUpon>Medical.tt</DependentUpon>
     </Compile>
+    <Compile Include="FacilityEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FacilityEdit.Designer.cs">
+      <DependentUpon>FacilityEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="FacilityEvent.cs">
       <DependentUpon>Medical.tt</DependentUpon>
     </Compile>
@@ -96,6 +102,12 @@
     </Compile>
     <Compile Include="Facilities.Designer.cs">
       <DependentUpon>Facilities.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FacilityManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FacilityManagement.Designer.cs">
+      <DependentUpon>FacilityManagement.cs</DependentUpon>
     </Compile>
     <Compile Include="Medical.Context.cs">
       <AutoGen>True</AutoGen>
@@ -125,6 +137,12 @@
     </Compile>
     <EmbeddedResource Include="Facilities.resx">
       <DependentUpon>Facilities.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacilityEdit.resx">
+      <DependentUpon>FacilityEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacilityManagement.resx">
+      <DependentUpon>FacilityManagement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
