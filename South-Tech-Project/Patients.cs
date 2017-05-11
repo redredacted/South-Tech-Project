@@ -22,7 +22,6 @@ namespace South_Tech_Project
             InitializeComponent();
         }
 
-        // add parameters
         public static void AddPatient()
         {
             using (var MedDB = new MedicalEntities())
@@ -31,7 +30,6 @@ namespace South_Tech_Project
                 
                 MedDB.Patients.Add(p);
                 MedDB.SaveChanges();
-                //UpdateFacilities();
             }
         }
 
@@ -41,6 +39,11 @@ namespace South_Tech_Project
             {
                 dgvPatients.DataSource = MedDB.Facilities.Attach(_facility).Patients.ToList();
             }
+        }
+
+        private void tsBtnAdd_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

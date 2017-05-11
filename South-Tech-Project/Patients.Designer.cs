@@ -64,6 +64,7 @@
             this.tsBtnAdd.Size = new System.Drawing.Size(33, 22);
             this.tsBtnAdd.Text = "Add";
             this.tsBtnAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.tsBtnAdd.Click += new System.EventHandler(this.tsBtnAdd_Click);
             // 
             // tsBtnInfo
             // 
