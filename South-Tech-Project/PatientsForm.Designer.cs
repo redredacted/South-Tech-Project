@@ -1,6 +1,6 @@
 ﻿namespace South_Tech_Project
 {
-    partial class Patients
+    partial class PatientsForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,16 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Patients));
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PatientsForm));
             this.PatientToolStrip = new System.Windows.Forms.ToolStrip();
             this.tsBtnAdd = new System.Windows.Forms.ToolStripButton();
             this.tsBtnInfo = new System.Windows.Forms.ToolStripButton();
             this.tsBtnExit = new System.Windows.Forms.ToolStripButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvPatients = new System.Windows.Forms.DataGridView();
+            this.ctxMenuDG = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.PatientToolStrip.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPatients)).BeginInit();
+            this.ctxMenuDG.SuspendLayout();
             this.SuspendLayout();
             // 
             // PatientToolStrip
@@ -101,6 +107,7 @@
             // 
             this.dgvPatients.AllowUserToAddRows = false;
             this.dgvPatients.AllowUserToDeleteRows = false;
+            this.dgvPatients.AllowUserToResizeColumns = false;
             this.dgvPatients.AllowUserToResizeRows = false;
             this.dgvPatients.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
@@ -108,6 +115,8 @@
             this.dgvPatients.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvPatients.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dgvPatients.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
+            this.dgvPatients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgvPatients.ContextMenuStrip = this.ctxMenuDG;
             this.dgvPatients.Location = new System.Drawing.Point(6, 19);
             this.dgvPatients.MultiSelect = false;
             this.dgvPatients.Name = "dgvPatients";
@@ -120,21 +129,50 @@
             this.dgvPatients.ShowRowErrors = false;
             this.dgvPatients.Size = new System.Drawing.Size(895, 356);
             this.dgvPatients.TabIndex = 2;
+            this.dgvPatients.RowContextMenuStripNeeded += new System.Windows.Forms.DataGridViewRowContextMenuStripNeededEventHandler(this.dgvPatients_RowContextMenuStripNeeded);
             // 
-            // Patients
+            // ctxMenuDG
+            // 
+            this.ctxMenuDG.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.viewToolStripMenuItem,
+            this.editToolStripMenuItem,
+            this.deleteToolStripMenuItem});
+            this.ctxMenuDG.Name = "contextMenuStrip1";
+            this.ctxMenuDG.Size = new System.Drawing.Size(118, 70);
+            // 
+            // viewToolStripMenuItem
+            // 
+            this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
+            this.viewToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.viewToolStripMenuItem.Text = "Manage";
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.editToolStripMenuItem.Text = "Edit";
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.deleteToolStripMenuItem.Text = "Delete";
+            // 
+            // PatientsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(931, 422);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.PatientToolStrip);
-            this.Name = "Patients";
+            this.Name = "PatientsForm";
             this.Text = "Patients";
             this.Load += new System.EventHandler(this.Patients_Load);
             this.PatientToolStrip.ResumeLayout(false);
             this.PatientToolStrip.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPatients)).EndInit();
+            this.ctxMenuDG.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -148,5 +186,9 @@
         private System.Windows.Forms.ToolStripButton tsBtnExit;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dgvPatients;
+        private System.Windows.Forms.ContextMenuStrip ctxMenuDG;
+        private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
     }
 }

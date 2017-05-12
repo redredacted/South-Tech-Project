@@ -1,6 +1,6 @@
 ﻿namespace South_Tech_Project
 {
-    partial class PatientEdit
+    partial class PatientEditForm
     {
         /// <summary>
         /// Required designer variable.
@@ -48,6 +48,7 @@
             this.btnExit.TabIndex = 5;
             this.btnExit.Text = "Cancel";
             this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // btnContinue
             // 
@@ -130,7 +131,7 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Name: ";
             // 
-            // PatientEdit
+            // PatientEditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -138,7 +139,7 @@
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnContinue);
             this.Controls.Add(this.groupBox1);
-            this.Name = "PatientEdit";
+            this.Name = "PatientEditForm";
             this.Text = "PatientEdit";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

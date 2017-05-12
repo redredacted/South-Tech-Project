@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace South_Tech_Project
 {
-    public partial class PatientEdit : Form
+    public partial class PatientEditForm : Form
     {
-        public PatientEdit()
+        public PatientEditForm()
         {
             InitializeComponent();
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

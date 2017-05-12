@@ -50,7 +50,7 @@ namespace South_Tech_Project
         {
             if (_newFacility)
             {
-                Facilities.AddFacility(this.txtName.Text, this.txtAddress.Text, this.txtZip.Text, this.txtPhone.Text, this.txtCity.Text, this.lbStates.Text);
+                FacilitiesForm.AddFacility(this.txtName.Text, this.txtAddress.Text, this.txtZip.Text, this.txtPhone.Text, this.txtCity.Text, this.lbStates.Text);
             }
             else
             {

@@ -1,6 +1,6 @@
 ﻿namespace South_Tech_Project
 {
-    partial class Facilities
+    partial class FacilitiesForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Facilities));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FacilitiesForm));
             this.dgvFacilities = new System.Windows.Forms.DataGridView();
             this.ctxMenuDG = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -79,26 +79,26 @@
             this.editToolStripMenuItem,
             this.deleteToolStripMenuItem});
             this.ctxMenuDG.Name = "contextMenuStrip1";
-            this.ctxMenuDG.Size = new System.Drawing.Size(108, 70);
+            this.ctxMenuDG.Size = new System.Drawing.Size(118, 70);
             // 
             // viewToolStripMenuItem
             // 
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-            this.viewToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
-            this.viewToolStripMenuItem.Text = "View";
+            this.viewToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.viewToolStripMenuItem.Text = "Manage";
             this.viewToolStripMenuItem.Click += new System.EventHandler(this.viewToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.editToolStripMenuItem.Text = "Edit";
             this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.deleteToolStripMenuItem.Text = "Delete";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
@@ -160,14 +160,14 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Facility Table";
             // 
-            // Facilities
+            // FacilitiesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(931, 422);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.FacilityToolStrip);
-            this.Name = "Facilities";
+            this.Name = "FacilitiesForm";
             this.Text = "Medical Facilitites";
             this.Load += new System.EventHandler(this.Facilities_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvFacilities)).EndInit();
