@@ -22,7 +22,7 @@ namespace South_Tech_Project
 
         public static void AddFacility(string name, string address, string zip, string phone, string city, string state)
         {
-            using (var MedDB = new MedicalEntities())
+            using (var MedDB = new MedicalSQLiteContext())
             {
                 Facility f = new Facility();
                 f.FacilityID = Guid.NewGuid();
@@ -40,7 +40,7 @@ namespace South_Tech_Project
 
         public void UpdateFacilities()
         {
-            using (var MedDB = new MedicalEntities())
+            using (var MedDB = new MedicalSQLiteContext())
             {
                 MedDB.Facilities.Load();
                 dgvFacilities.DataSource = MedDB.Facilities.Local;
@@ -49,11 +49,11 @@ namespace South_Tech_Project
 
         private void Facilities_Load(object sender, EventArgs e)
         {
-            using (var MedDB = new MedicalEntities())
+            using (var MedDB = new MedicalSQLiteContext())
             {
                 try
                 {
-                    if (MedDB.Facilities.Count() == 0)
+                    if (true)
                     {
                         AddFacility("Hospitality Hospital", "35101 place way", "12345", "3145442183", "Kansas City", "Kansas");
                         AddFacility("Gamble Hospital", "666 casino avenue", "77777", "2175343133", "Timbuktu", "Missouri");
@@ -99,8 +99,6 @@ namespace South_Tech_Project
                 dgvFacilities.Columns["Patients"].Visible = false;
                 dgvFacilities.Columns["Drugs"].Visible = false;
                 dgvFacilities.Columns["Employees"].Visible = false;
-
-                // enable after population
             }
         }
 
@@ -133,7 +131,7 @@ namespace South_Tech_Project
             {
                 MessageBox.Show($"{selection.Name} was sucessfully deleted from the facilities table!");
 
-                using (var MedDB = new MedicalEntities())
+                using (var MedDB = new MedicalSQLiteContext())
                 {
                     MedDB.Entry(selection).State = EntityState.Deleted;
                     MedDB.SaveChanges();

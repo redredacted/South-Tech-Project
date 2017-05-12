@@ -160,9 +160,9 @@
         </EntityType>
         <EntityType Name="FacilityEvent">
           <Key>
-            <PropertyRef Name="EventID" />
+            <PropertyRef Name="FacilityEventID" />
           </Key>
-          <Property Name="EventID" Type="Guid" Nullable="false" />
+          <Property Name="FacilityEventID" Type="Guid" Nullable="false" a:SetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
           <Property Name="PatientID" Type="Guid" Nullable="false" />
           <Property Name="FacilityID" Type="Guid" Nullable="false" />
           <Property Name="type" Type="Int32" Nullable="false" />
@@ -467,7 +467,7 @@
           <EntitySetMapping Name="FacilityEvents">
             <EntityTypeMapping TypeName="MedicalModel.FacilityEvent">
               <MappingFragment StoreEntitySet="FacilityEvents">
-                <ScalarProperty Name="EventID" ColumnName="EventID" />
+                <ScalarProperty Name="FacilityEventID" ColumnName="EventID" />
                 <ScalarProperty Name="PatientID" ColumnName="PatientID" />
                 <ScalarProperty Name="FacilityID" ColumnName="FacilityID" />
                 <ScalarProperty Name="type" ColumnName="type" />
@@ -539,7 +539,7 @@
     </Connection>
     <Options>
       <DesignerInfoPropertySet>
-        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="ValidateOnBuild" Value="True" />
         <DesignerProperty Name="EnablePluralization" Value="true" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />

@@ -24,7 +24,7 @@ namespace South_Tech_Project
 
         public static void AddPatient()
         {
-            using (var MedDB = new MedicalEntities())
+            using (var MedDB = new MedicalSQLiteContext())
             {
                 Patient p = new Patient();
                 
@@ -35,7 +35,7 @@ namespace South_Tech_Project
 
         private void Patients_Load(object sender, EventArgs e)
         {
-            using (var MedDB = new MedicalEntities())
+            using (var MedDB = new MedicalSQLiteContext())
             {
                 dgvPatients.DataSource = MedDB.Facilities.Attach(_facility).Patients.ToList();
             }

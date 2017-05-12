@@ -82,16 +82,16 @@
             // 
             // txtAddress
             // 
-            this.txtAddress.Location = new System.Drawing.Point(73, 46);
+            this.txtAddress.Location = new System.Drawing.Point(108, 46);
             this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(196, 20);
+            this.txtAddress.Size = new System.Drawing.Size(161, 20);
             this.txtAddress.TabIndex = 7;
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(66, 20);
+            this.txtName.Location = new System.Drawing.Point(100, 20);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(203, 20);
+            this.txtName.Size = new System.Drawing.Size(170, 20);
             this.txtName.TabIndex = 6;
             // 
             // label3
@@ -114,9 +114,9 @@
             this.label2.Location = new System.Drawing.Point(3, 45);
             this.label2.Margin = new System.Windows.Forms.Padding(1, 3, 3, 3);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 18);
+            this.label2.Size = new System.Drawing.Size(99, 18);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Address: ";
+            this.label2.Text = "Middle Name:";
             // 
             // label1
             // 
@@ -126,9 +126,9 @@
             this.label1.Location = new System.Drawing.Point(4, 19);
             this.label1.Margin = new System.Windows.Forms.Padding(1, 3, 3, 3);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(56, 18);
+            this.label1.Size = new System.Drawing.Size(89, 18);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Name: ";
+            this.label1.Text = "First Name: ";
             // 
             // PatientEdit
             // 
@@ -139,7 +139,7 @@
             this.Controls.Add(this.btnContinue);
             this.Controls.Add(this.groupBox1);
             this.Name = "PatientEdit";
-            this.Text = "PatientEdit";
+            this.Text = "Patient Edit";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

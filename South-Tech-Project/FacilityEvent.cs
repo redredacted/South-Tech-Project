@@ -14,7 +14,7 @@ namespace South_Tech_Project
     
     public partial class FacilityEvent
     {
-        public System.Guid EventID { get; set; }
+        public System.Guid FacilityEventID { get; set; }
         public System.Guid PatientID { get; set; }
         public System.Guid FacilityID { get; set; }
         public int type { get; set; }

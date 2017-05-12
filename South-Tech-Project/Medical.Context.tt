@@ -55,8 +55,8 @@ using System.Linq;
 
 <#=Accessibility.ForType(container)#> partial class <#=code.Escape(container)#> : DbContext
 {
-    public <#=code.Escape(container)#>()
-        : base("name=<#=container.Name#>")
+    public <#=code.Escape(container)#>(string connectString)
+        : base(connectString)
     {
 <#
 if (!loader.IsLazyLoadingEnabled(container))
@@ -78,11 +78,6 @@ foreach (var entitySet in container.BaseEntitySets.OfType<EntitySet>())
     }
 }
 #>
-    }
-
-    protected override void OnModelCreating(DbModelBuilder modelBuilder)
-    {
-        throw new UnintentionalCodeFirstException();
     }
 
 <#

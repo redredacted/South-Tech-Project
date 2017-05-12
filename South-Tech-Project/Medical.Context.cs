@@ -15,14 +15,9 @@ namespace South_Tech_Project
     
     public partial class MedicalEntities : DbContext
     {
-        public MedicalEntities()
-            : base("name=MedicalEntities")
+        public MedicalEntities(string connectString)
+            : base(connectString)
         {
-        }
-    
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            throw new UnintentionalCodeFirstException();
         }
     
         public virtual DbSet<Contact> Contacts { get; set; }

@@ -54,7 +54,7 @@ namespace South_Tech_Project
             }
             else
             {
-                using (var MedDB = new MedicalEntities())
+                using (var MedDB = new MedicalSQLiteContext())
                 {
                     var entry = MedDB.Facilities.Find(_facility.FacilityID);
 
